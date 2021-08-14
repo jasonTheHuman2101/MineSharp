@@ -49,5 +49,11 @@ namespace MineSharp
             server.Stop();
             server.OnOutputReceived -= ReceivedServerOutput;
         }
+
+        private void SendCommand(object sender, EventArgs e)
+        {
+            server.SendCommand(commandBox.Text);
+            commandBox.Text = "";
+        }
     }
 }

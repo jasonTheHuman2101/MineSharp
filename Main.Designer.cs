@@ -36,6 +36,8 @@ namespace MineSharp
             this.serverOutput = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.commandBox = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // startServerButton
@@ -81,7 +83,10 @@ namespace MineSharp
             this.serverOutput.Location = new System.Drawing.Point(9, 51);
             this.serverOutput.Multiline = true;
             this.serverOutput.Name = "serverOutput";
-            this.serverOutput.Size = new System.Drawing.Size(779, 387);
+            this.serverOutput.ReadOnly = true;
+            this.serverOutput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.serverOutput.ShortcutsEnabled = false;
+            this.serverOutput.Size = new System.Drawing.Size(779, 352);
             this.serverOutput.TabIndex = 4;
             // 
             // button1
@@ -105,11 +110,30 @@ namespace MineSharp
             this.label2.TabIndex = 6;
             this.label2.Text = "Note: Ensure the executable is called \"server.jar\" before running.";
             // 
+            // commandBox
+            // 
+            this.commandBox.Location = new System.Drawing.Point(12, 409);
+            this.commandBox.Name = "commandBox";
+            this.commandBox.Size = new System.Drawing.Size(248, 20);
+            this.commandBox.TabIndex = 7;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(266, 408);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(73, 20);
+            this.button2.TabIndex = 8;
+            this.button2.Text = "Run";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.SendCommand);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 438);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.commandBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.serverOutput);
@@ -133,6 +157,8 @@ namespace MineSharp
         private System.Windows.Forms.TextBox serverOutput;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox commandBox;
+        private System.Windows.Forms.Button button2;
     }
 }
 
