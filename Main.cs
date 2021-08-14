@@ -19,6 +19,12 @@ namespace MineSharp
         public Main()
         {
             InitializeComponent();
+            this.FormClosing += CloseCommandSent;
+        }
+
+        private void CloseCommandSent(object sender, FormClosingEventArgs e)
+        {
+            try { server.Stop(); } catch { }
         }
 
         private void FolderPicker(object sender, EventArgs e)
@@ -41,7 +47,11 @@ namespace MineSharp
 
         private void ReceivedServerOutput(OutputEventArgs e)
         {
-            Invoke((MethodInvoker)delegate { serverOutput.Text = serverOutput.Text + Environment.NewLine + e.Output; });
+            try
+            {
+                Invoke((MethodInvoker)delegate { serverOutput.Text = serverOutput.Text + Environment.NewLine + e.Output; });
+            }
+            catch { }
         }
 
         private void StopServer(object sender, EventArgs e)
