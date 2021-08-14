@@ -16,6 +16,7 @@ namespace MineSharp
     {
         MinecraftServer server;
         List<string> PlayerList = new List<string>();
+        FunctionsForm FuncForm = new FunctionsForm();
 
         public Main()
         {
@@ -45,6 +46,8 @@ namespace MineSharp
             server.OnOutputReceived += ReceivedServerOutput;
             server.Launch(workingDirectoryDisplayBox.Text);
             statusIndicator.BackColor = Color.YellowGreen;
+            FuncForm.Show();
+            FuncForm.parentForm = this;
         }
 
         private void ReceivedServerOutput(OutputEventArgs e)
@@ -56,9 +59,24 @@ namespace MineSharp
                 {
                     Invoke((MethodInvoker)delegate{ statusIndicator.BackColor = Color.Green; });
                 }
-                if (e.Output.Contains("Stopping server"))//
+                else if (e.Output.Contains("Stopping server"))//
                 {
                     Invoke((MethodInvoker)delegate { statusIndicator.BackColor = Color.DarkRed; });
+                    Invoke((MethodInvoker)delegate { FuncForm.Players.Clear(); });
+                }
+                else if (e.Output.Contains("joined the game"))//
+                {
+                    string newUser = e.Output.Substring(33);
+                    int firstSpace = newUser.IndexOf(' ');
+                    string name = newUser.Substring(0, firstSpace);
+                    Invoke((MethodInvoker)delegate { FuncForm.Players.Add(name); });
+                }
+                else if (e.Output.Contains("left the game"))//
+                {
+                    string newUser = e.Output.Substring(33);
+                    int firstSpace = newUser.IndexOf(' ');
+                    string name = newUser.Substring(0, firstSpace);
+                    Invoke((MethodInvoker)delegate { FuncForm.Players.Remove(name); });
                 }
             }
             catch { }
@@ -71,9 +89,14 @@ namespace MineSharp
             statusIndicator.BackColor = Color.DarkRed;
         }
 
+        public void SendMessageToServer(string message)
+        {
+            server.SendCommand(message);
+        }
+
         private void SendCommand(object sender, EventArgs e)
         {
-            server.SendCommand(commandBox.Text);
+            SendMessageToServer(commandBox.Text);
             commandBox.Text = "";
         }
     }

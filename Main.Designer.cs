@@ -115,12 +115,12 @@ namespace MineSharp
             // 
             this.commandBox.Location = new System.Drawing.Point(12, 409);
             this.commandBox.Name = "commandBox";
-            this.commandBox.Size = new System.Drawing.Size(248, 20);
+            this.commandBox.Size = new System.Drawing.Size(697, 20);
             this.commandBox.TabIndex = 7;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(266, 408);
+            this.button2.Location = new System.Drawing.Point(715, 409);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(73, 20);
             this.button2.TabIndex = 8;
