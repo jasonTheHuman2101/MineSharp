@@ -38,13 +38,14 @@ namespace MineSharp
             this.label2 = new System.Windows.Forms.Label();
             this.commandBox = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
+            this.statusIndicator = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // startServerButton
             // 
-            this.startServerButton.Location = new System.Drawing.Point(636, 12);
+            this.startServerButton.Location = new System.Drawing.Point(636, 13);
             this.startServerButton.Name = "startServerButton";
-            this.startServerButton.Size = new System.Drawing.Size(73, 20);
+            this.startServerButton.Size = new System.Drawing.Size(43, 19);
             this.startServerButton.TabIndex = 0;
             this.startServerButton.Text = "Start";
             this.startServerButton.UseVisualStyleBackColor = true;
@@ -52,9 +53,9 @@ namespace MineSharp
             // 
             // stopServerButton
             // 
-            this.stopServerButton.Location = new System.Drawing.Point(715, 12);
+            this.stopServerButton.Location = new System.Drawing.Point(746, 13);
             this.stopServerButton.Name = "stopServerButton";
-            this.stopServerButton.Size = new System.Drawing.Size(73, 20);
+            this.stopServerButton.Size = new System.Drawing.Size(42, 19);
             this.stopServerButton.TabIndex = 1;
             this.stopServerButton.Text = "Stop";
             this.stopServerButton.UseVisualStyleBackColor = true;
@@ -127,11 +128,22 @@ namespace MineSharp
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.SendCommand);
             // 
+            // statusIndicator
+            // 
+            this.statusIndicator.BackColor = System.Drawing.Color.DarkRed;
+            this.statusIndicator.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.statusIndicator.Location = new System.Drawing.Point(685, 13);
+            this.statusIndicator.Name = "statusIndicator";
+            this.statusIndicator.Size = new System.Drawing.Size(55, 19);
+            this.statusIndicator.TabIndex = 9;
+            this.statusIndicator.Text = "";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 438);
+            this.Controls.Add(this.statusIndicator);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.commandBox);
             this.Controls.Add(this.label2);
@@ -159,6 +171,7 @@ namespace MineSharp
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox commandBox;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.RichTextBox statusIndicator;
     }
 }
 

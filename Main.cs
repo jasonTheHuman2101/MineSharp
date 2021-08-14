@@ -15,6 +15,7 @@ namespace MineSharp
     public partial class Main : Form
     {
         MinecraftServer server;
+        List<string> PlayerList = new List<string>();
 
         public Main()
         {
@@ -43,6 +44,7 @@ namespace MineSharp
             server = new MinecraftServer();
             server.OnOutputReceived += ReceivedServerOutput;
             server.Launch(workingDirectoryDisplayBox.Text);
+            statusIndicator.BackColor = Color.YellowGreen;
         }
 
         private void ReceivedServerOutput(OutputEventArgs e)
@@ -50,6 +52,14 @@ namespace MineSharp
             try
             {
                 Invoke((MethodInvoker)delegate { serverOutput.Text = serverOutput.Text + Environment.NewLine + e.Output; });
+                if(e.Output.Contains("For help"))//
+                {
+                    Invoke((MethodInvoker)delegate{ statusIndicator.BackColor = Color.Green; });
+                }
+                if (e.Output.Contains("Stopping server"))//
+                {
+                    Invoke((MethodInvoker)delegate { statusIndicator.BackColor = Color.DarkRed; });
+                }
             }
             catch { }
         }
@@ -58,6 +68,7 @@ namespace MineSharp
         {
             server.Stop();
             server.OnOutputReceived -= ReceivedServerOutput;
+            statusIndicator.BackColor = Color.DarkRed;
         }
 
         private void SendCommand(object sender, EventArgs e)
