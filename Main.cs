@@ -16,7 +16,8 @@ namespace MineSharp
     {
         MinecraftServer server;
         List<string> PlayerList = new List<string>();
-        FunctionsForm FuncForm = new FunctionsForm();
+        FunctionsForm FuncForm;
+        public string path;
 
         public Main()
         {
@@ -42,10 +43,13 @@ namespace MineSharp
 
         private void StartServer(object sender, EventArgs e)
         {
+            serverOutput.Clear();
             server = new MinecraftServer();
             server.OnOutputReceived += ReceivedServerOutput;
             server.Launch(workingDirectoryDisplayBox.Text);
+            path = workingDirectoryDisplayBox.Text;
             statusIndicator.BackColor = Color.YellowGreen;
+            FuncForm = new FunctionsForm();
             FuncForm.Show();
             FuncForm.parentForm = this;
         }
@@ -87,6 +91,7 @@ namespace MineSharp
             server.Stop();
             server.OnOutputReceived -= ReceivedServerOutput;
             statusIndicator.BackColor = Color.DarkRed;
+            FuncForm.Close();
         }
 
         public void SendMessageToServer(string message)

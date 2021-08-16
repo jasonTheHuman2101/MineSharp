@@ -12,6 +12,7 @@ namespace MineSharp
 {
     public partial class FunctionsForm : Form
     {
+        string selectedPlayer;
         public Main parentForm;
         public List<string> Players = new List<string>();
 
@@ -32,11 +33,56 @@ namespace MineSharp
             {
                 PlayerListBox.Items.Add(Players[i]);
             }
+
+            if (!Players.Contains(selectedPlayer))
+            {
+                SelectedPlayerGroupBox.Text = "Selected Player: None";
+            }
         }
 
         private void PlayerSelected(object sender, EventArgs e)
         {
-            string selectedPlayer = PlayerListBox.Items[PlayerListBox.SelectedIndex].ToString();
+            if (PlayerListBox.SelectedItem != null)
+            {
+                selectedPlayer = PlayerListBox.SelectedItem.ToString();
+                SelectedPlayerGroupBox.Text = "Selected Player: " + selectedPlayer;
+            }
         }
+        #region functions
+        private void kick_Click(object sender, EventArgs e)
+        {
+            parentForm.SendMessageToServer("kick " + selectedPlayer);
+        }
+
+        private void op_Click(object sender, EventArgs e)
+        {
+            parentForm.SendMessageToServer("op " + selectedPlayer);
+        }
+
+        private void deop_Click(object sender, EventArgs e)
+        {
+            parentForm.SendMessageToServer("deop " + selectedPlayer);
+        }
+
+        private void gmc_Click(object sender, EventArgs e)
+        {
+            parentForm.SendMessageToServer("gamemode c " + selectedPlayer);
+        }
+
+        private void gms_Click(object sender, EventArgs e)
+        {
+            parentForm.SendMessageToServer("gamemode s " + selectedPlayer);
+        }
+
+        private void tp_Click(object sender, EventArgs e)
+        {
+            parentForm.SendMessageToServer(string.Format("tp {0} {1} {2} {3}", selectedPlayer, tpx.Text, tpy.Text, tpz.Text));
+        }
+
+        private void whisper_Click(object sender, EventArgs e)
+        {
+            parentForm.SendMessageToServer("w " + selectedPlayer + " " + whispertxt.Text);
+        }
+        #endregion
     }
 }
