@@ -58,9 +58,9 @@ namespace MineSharp
             this.SelectedPlayerGroupBox.Controls.Add(this.gmc);
             this.SelectedPlayerGroupBox.Controls.Add(this.op);
             this.SelectedPlayerGroupBox.Controls.Add(this.kick);
-            this.SelectedPlayerGroupBox.Location = new System.Drawing.Point(333, 12);
+            this.SelectedPlayerGroupBox.Location = new System.Drawing.Point(333, 7);
             this.SelectedPlayerGroupBox.Name = "SelectedPlayerGroupBox";
-            this.SelectedPlayerGroupBox.Size = new System.Drawing.Size(247, 134);
+            this.SelectedPlayerGroupBox.Size = new System.Drawing.Size(247, 147);
             this.SelectedPlayerGroupBox.TabIndex = 2;
             this.SelectedPlayerGroupBox.TabStop = false;
             this.SelectedPlayerGroupBox.Text = "Selected Player: None";
@@ -166,9 +166,9 @@ namespace MineSharp
             // PlayerListBox
             // 
             this.PlayerListBox.FormattingEnabled = true;
-            this.PlayerListBox.Location = new System.Drawing.Point(36, 20);
+            this.PlayerListBox.Location = new System.Drawing.Point(12, 7);
             this.PlayerListBox.Name = "PlayerListBox";
-            this.PlayerListBox.Size = new System.Drawing.Size(237, 95);
+            this.PlayerListBox.Size = new System.Drawing.Size(315, 147);
             this.PlayerListBox.TabIndex = 3;
             this.PlayerListBox.SelectedValueChanged += new System.EventHandler(this.PlayerSelected);
             // 

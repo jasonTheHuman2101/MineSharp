@@ -67,8 +67,6 @@ namespace MineSharp
             this.workingDirectoryDisplayBox.Name = "workingDirectoryDisplayBox";
             this.workingDirectoryDisplayBox.Size = new System.Drawing.Size(428, 20);
             this.workingDirectoryDisplayBox.TabIndex = 2;
-            this.workingDirectoryDisplayBox.Text = "C:\\Users\\jason\\Desktop\\Code\\VS\\MineCraft_Controller_-_Source_V2\\MineCraft Control" +
-    "ler\\bin\\Debug\\servere";
             // 
             // label1
             // 
