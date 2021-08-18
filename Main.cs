@@ -46,7 +46,7 @@ namespace MineSharp
             serverOutput.Clear();
             server = new MinecraftServer();
             server.OnOutputReceived += ReceivedServerOutput;
-            server.Launch(workingDirectoryDisplayBox.Text);
+            server.Launch(workingDirectoryDisplayBox.Text, javaPath.Text, javaArgs.Text);
             path = workingDirectoryDisplayBox.Text;
             statusIndicator.BackColor = Color.YellowGreen;
             FuncForm = new FunctionsForm();
@@ -70,17 +70,37 @@ namespace MineSharp
                 }
                 else if (e.Output.Contains("joined the game"))//
                 {
-                    string newUser = e.Output.Substring(33);
-                    int firstSpace = newUser.IndexOf(' ');
-                    string name = newUser.Substring(0, firstSpace);
-                    Invoke((MethodInvoker)delegate { FuncForm.Players.Add(name); });
+                    if (e.Output.Contains("minecraft/DedicatedServer"))
+                    {
+                        string newUser = e.Output.Substring(61);
+                        int firstSpace = newUser.IndexOf(' ');
+                        string name = newUser.Substring(0, firstSpace);
+                        Invoke((MethodInvoker)delegate { FuncForm.Players.Add(name); });
+                    }
+                    else
+                    {
+                        string newUser = e.Output.Substring(33);
+                        int firstSpace = newUser.IndexOf(' ');
+                        string name = newUser.Substring(0, firstSpace);
+                        Invoke((MethodInvoker)delegate { FuncForm.Players.Add(name); });
+                    }
                 }
                 else if (e.Output.Contains("left the game"))//
                 {
-                    string newUser = e.Output.Substring(33);
-                    int firstSpace = newUser.IndexOf(' ');
-                    string name = newUser.Substring(0, firstSpace);
-                    Invoke((MethodInvoker)delegate { FuncForm.Players.Remove(name); });
+                    if (e.Output.Contains("minecraft/DedicatedServer"))
+                    {
+                        string newUser = e.Output.Substring(61);
+                        int firstSpace = newUser.IndexOf(' ');
+                        string name = newUser.Substring(0, firstSpace);
+                        Invoke((MethodInvoker)delegate { FuncForm.Players.Remove(name); });
+                    }
+                    else
+                    {
+                        string newUser = e.Output.Substring(33);
+                        int firstSpace = newUser.IndexOf(' ');
+                        string name = newUser.Substring(0, firstSpace);
+                        Invoke((MethodInvoker)delegate { FuncForm.Players.Remove(name); });
+                    }
                 }
             }
             catch { }
@@ -103,6 +123,11 @@ namespace MineSharp
         {
             SendMessageToServer(commandBox.Text);
             commandBox.Text = "";
+        }
+
+        private void issueFound(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/jasonTheHuman2101/MineSharp/issues/new");
         }
     }
 }

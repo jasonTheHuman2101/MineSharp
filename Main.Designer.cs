@@ -33,12 +33,17 @@ namespace MineSharp
             this.stopServerButton = new System.Windows.Forms.Button();
             this.workingDirectoryDisplayBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.serverOutput = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.commandBox = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.statusIndicator = new System.Windows.Forms.RichTextBox();
+            this.javaPath = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.serverOutput = new System.Windows.Forms.TextBox();
+            this.javaArgs = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.githubPage = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // startServerButton
@@ -77,17 +82,6 @@ namespace MineSharp
             this.label1.TabIndex = 3;
             this.label1.Text = "Path to server folder";
             // 
-            // serverOutput
-            // 
-            this.serverOutput.Location = new System.Drawing.Point(9, 51);
-            this.serverOutput.Multiline = true;
-            this.serverOutput.Name = "serverOutput";
-            this.serverOutput.ReadOnly = true;
-            this.serverOutput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.serverOutput.ShortcutsEnabled = false;
-            this.serverOutput.Size = new System.Drawing.Size(779, 352);
-            this.serverOutput.TabIndex = 4;
-            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(113, 12);
@@ -103,7 +97,7 @@ namespace MineSharp
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Maroon;
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label2.Location = new System.Drawing.Point(199, 35);
+            this.label2.Location = new System.Drawing.Point(199, 61);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(313, 13);
             this.label2.TabIndex = 6;
@@ -136,11 +130,71 @@ namespace MineSharp
             this.statusIndicator.TabIndex = 9;
             this.statusIndicator.Text = "";
             // 
+            // javaPath
+            // 
+            this.javaPath.Location = new System.Drawing.Point(95, 38);
+            this.javaPath.Name = "javaPath";
+            this.javaPath.Size = new System.Drawing.Size(207, 20);
+            this.javaPath.TabIndex = 10;
+            this.javaPath.Text = "java";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 41);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(77, 13);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "JVM EXE Path";
+            // 
+            // serverOutput
+            // 
+            this.serverOutput.Location = new System.Drawing.Point(9, 77);
+            this.serverOutput.Multiline = true;
+            this.serverOutput.Name = "serverOutput";
+            this.serverOutput.ReadOnly = true;
+            this.serverOutput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.serverOutput.ShortcutsEnabled = false;
+            this.serverOutput.Size = new System.Drawing.Size(779, 326);
+            this.serverOutput.TabIndex = 4;
+            // 
+            // javaArgs
+            // 
+            this.javaArgs.Location = new System.Drawing.Point(390, 38);
+            this.javaArgs.Name = "javaArgs";
+            this.javaArgs.Size = new System.Drawing.Size(240, 20);
+            this.javaArgs.TabIndex = 12;
+            this.javaArgs.Text = "-Xms2G Xmx2G";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(308, 41);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(76, 13);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "JVM EXE Args";
+            // 
+            // githubPage
+            // 
+            this.githubPage.Location = new System.Drawing.Point(636, 36);
+            this.githubPage.Name = "githubPage";
+            this.githubPage.Size = new System.Drawing.Size(151, 37);
+            this.githubPage.TabIndex = 14;
+            this.githubPage.Text = "Found an issue? Press here";
+            this.githubPage.UseVisualStyleBackColor = true;
+            this.githubPage.Click += new System.EventHandler(this.issueFound);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 438);
+            this.Controls.Add(this.githubPage);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.javaArgs);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.javaPath);
             this.Controls.Add(this.statusIndicator);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.commandBox);
@@ -164,12 +218,17 @@ namespace MineSharp
         private System.Windows.Forms.Button stopServerButton;
         private System.Windows.Forms.TextBox workingDirectoryDisplayBox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox serverOutput;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox commandBox;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.RichTextBox statusIndicator;
+        private System.Windows.Forms.TextBox javaPath;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox serverOutput;
+        private System.Windows.Forms.TextBox javaArgs;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button githubPage;
     }
 }
 

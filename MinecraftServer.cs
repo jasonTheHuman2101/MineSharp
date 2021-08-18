@@ -23,7 +23,7 @@ namespace MineSharp
 
         private void OnOutputReceived_method(OutputEventArgs e){}
 
-        public bool Launch(string _serverPath)
+        public bool Launch(string _serverPath, string jvmExePath, string ramAllocation)
         {
             bool ready = false;
 
@@ -33,7 +33,7 @@ namespace MineSharp
                 {
                     string jarFile = _serverPath + "\\server.jar";
 
-                    ProcessStartInfo ssi = new ProcessStartInfo(@"java", "-Xmx6G -Xms5G -jar \"" + jarFile + "\" nogui -nojline")
+                    ProcessStartInfo ssi = new ProcessStartInfo(jvmExePath, ramAllocation+" -jar \"" + jarFile + "\" nogui -nojline")
                     {
                         CreateNoWindow = true,
                         UseShellExecute = false,
