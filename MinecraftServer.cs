@@ -31,7 +31,7 @@ namespace MineSharp
             {
                 try
                 {
-                    string jarFile = _serverPath + "\\server.jar";
+                    string jarFile = _serverPath + "/server.jar";
 
                     ProcessStartInfo ssi = new ProcessStartInfo(jvmExePath, ramAllocation+" -jar \"" + jarFile + "\" nogui -nojline")
                     {
